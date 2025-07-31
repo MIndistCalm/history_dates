@@ -1,5 +1,5 @@
 ## 🚀 Быстрый старт
-
+**https://mindistcalm.github.io/history_dates/**
 ### Установка
 ```bash
 git clone https://github.com/MIndistCalm/history_dates.git
