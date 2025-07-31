@@ -2,6 +2,7 @@
   "name": "history_dates",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://mindistcalm.github.io/history_dates",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
