@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap');
+@use './colors.scss' as *;
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&display=swap');
 
 /* CSS Reset */
 * {
@@ -7,16 +8,17 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
 body {
   margin: 0;
   height: 100vh;
   width: 100vw;
   font-family: 'PT Sans', Arial, sans-serif;
-  background: #f8f9fb;
+  background: $background;
+  color: $black-blue;
+}
+
+/* CSS Variables for dynamic theming */
+:root {
+  --background: #{$background};
+  --text-color: #{$black-blue};
 }
