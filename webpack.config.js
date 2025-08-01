@@ -7,7 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     clean: true,
-    publicPath: '/history_dates/', // Добавить эту строку
+    publicPath: '/history_dates/',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],

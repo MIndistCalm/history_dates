@@ -1,0 +1,125 @@
+.history-container {
+  border-color: var(--black-blue-10);
+  border-style: solid;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  min-height: 100%;
+  position: relative;
+
+  &__title {
+    position: absolute;
+    top: 170px;
+    padding-left: 78px;
+
+    line-height: 120%;
+    font-size: 3.5rem;
+    font-weight: bold;
+    width: min-content;
+
+    border-left: 5px solid;
+    border-image: linear-gradient(to bottom, var(--primary), var(--secondary)) 1;
+    border-image-slice: 1;
+  }
+}
+
+.animated-circle {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 530px;
+  height: 530px;
+  transform-origin: center center;
+  z-index: 10;
+
+  &__outline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    z-index: 10;
+  }
+
+  &__point {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: var(--black-blue);
+    border-radius: 50%;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      width 0.2s ease,
+      height 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    span {
+      display: none;
+      color: var(--black-blue);
+      font-size: 1.2rem;
+    }
+
+    &:hover,
+    &.hovered {
+      background: var(--background);
+      border: 1px solid var(--black-blue);
+      width: 3.5rem;
+      height: 3.5rem;
+
+      span {
+        display: block;
+      }
+
+      &::after {
+        content: attr(data-label);
+        position: absolute;
+        left: calc(100% + 20px);
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--black-blue);
+        font-size: 20px;
+        font-weight: bold;
+        white-space: nowrap;
+        text-decoration-color: var(--secondary);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+        z-index: 10;
+      }
+    }
+
+    &:active {
+      background-color: #000;
+    }
+  }
+}
+
+.date-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  display: flex;
+  gap: 5rem;
+  letter-spacing: -8px;
+
+  &__start-date {
+    color: var(--primary);
+  }
+  &__end-date {
+    color: var(--secondary);
+  }
+  span {
+    cursor: default;
+    font-size: 200px;
+    font-weight: bold;
+  }
+}
