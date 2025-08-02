@@ -3,6 +3,11 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 20px;
   min-height: 100vh;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
 }
 
 @for $i from 1 through 12 {
@@ -23,6 +28,30 @@
   @for $span from 1 through (13 - $start) {
     .col-start-#{$start}-span-#{$span} {
       grid-column: $start / span $span;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  @for $i from 1 through 12 {
+    .col-span-#{$i} {
+      grid-column: span 1;
+    }
+
+    .col-start-#{$i} {
+      grid-column-start: 1;
+    }
+
+    .col-end-#{$i} {
+      grid-column-end: 2;
+    }
+  }
+
+  @for $start from 1 through 12 {
+    @for $span from 1 through (13 - $start) {
+      .col-start-#{$start}-span-#{$span} {
+        grid-column: 1 / span 1;
+      }
     }
   }
 }
