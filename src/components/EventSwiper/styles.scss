@@ -111,17 +111,28 @@
   padding: 0 90px;
   bottom: 100px;
 
-  &::before {
-    content: '';
+  &__label {
+    position: absolute;
+    top: -60px;
+      font-weight: bold;
+    width: 80%;
+    padding: 0 8px;
+    font-size: 14px;
+    z-index: 2;
+    white-space: nowrap;
+    display: none;
+  }
+
+  &__line {
     position: absolute;
     top: -20px;
-    left: auto;
-    right: auto;
+    left: 10%;
     width: 80%;
     height: 1px;
     background-color: rgba(0, 0, 0, 0.1);
-    display: none;
+    z-index: 1;
   }
+
 
   .event-card {
     @include event-card-base;
@@ -137,8 +148,6 @@
       font-size: 14px;
     }
   }
-
-
 
   .swiper-button-prev,
   .swiper-button-next {
@@ -200,6 +209,10 @@
 @media (max-width: 768px) {
   .event-swiper {
     bottom: 0;
+
+    &__label {
+      display: inline-block;
+    }
 
     &::before {
       display: block;

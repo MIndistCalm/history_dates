@@ -11,13 +11,18 @@ import 'swiper/css/pagination'
 interface EventSwiperProps {
   className?: string
   events: TEvent[]
+  label?: string
 }
 
-export const EventSwiper = ({ className = '', events }: EventSwiperProps) => {
+export const EventSwiper = ({ className = '', events, label }: EventSwiperProps) => {
   const { swiperRef, isMobile, handleSlideChange, handleSwiper } = useEventSwiper(events)
 
   return (
     <div className={`event-swiper ${className}`} ref={swiperRef}>
+      {label && (
+        <div className="event-swiper__label">{label}</div>
+      )}
+      <div className="event-swiper__line" />
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={80}
