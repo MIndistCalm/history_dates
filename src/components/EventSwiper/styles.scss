@@ -1,0 +1,239 @@
+@mixin event-card-base {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s ease;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+@mixin event-year-base {
+  font-weight: 500;
+  font-family: 'Bebas Neue';
+  color: var(--blue);
+}
+
+@mixin event-description-base {
+  line-height: 1.6;
+  color: var(--black-blue);
+  flex-grow: 1;
+}
+
+@mixin swiper-button-base {
+  background: white;
+  box-shadow: 0 0 15px var(--blue-10);
+  border-radius: 50%;
+  color: white;
+  transition: all 0.3s ease;
+
+  &::after {
+    color: var(--blue);
+    font-weight: bold;
+  }
+}
+
+@mixin swiper-pagination-base {
+  position: relative;
+  margin-top: 20px;
+
+  .swiper-pagination-bullet {
+    background: var(--black-blue-40);
+    opacity: 1;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+
+    &-active {
+      background: var(--black-blue);
+      opacity: 1;
+    }
+  }
+}
+
+@mixin swiper-pagination-bullet-size($size, $margin: 0) {
+  .swiper-pagination-bullet {
+    width: $size;
+    height: $size;
+    @if $margin != 0 {
+      margin: 0 $margin;
+    }
+  }
+}
+
+@mixin responsive-event-card($height, $year-size, $desc-size) {
+  .event-card {
+    height: $height;
+
+    .event-year {
+      font-size: $year-size;
+    }
+
+    .event-description {
+      font-size: $desc-size;
+    }
+  }
+}
+
+@mixin responsive-swiper-buttons($size, $font-size, $left-pos, $right-pos) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: $size;
+    height: $size;
+
+    &::after {
+      font-size: $font-size;
+    }
+  }
+
+  .swiper-button-prev {
+    left: $left-pos;
+  }
+
+  .swiper-button-next {
+    right: $right-pos;
+  }
+}
+
+@mixin responsive-pagination($bottom, $margin-top, $bullet-size, $bullet-margin: 0) {
+  .swiper-pagination {
+    bottom: $bottom;
+    margin-top: $margin-top;
+    @include swiper-pagination-bullet-size($bullet-size, $bullet-margin);
+  }
+}
+
+.event-swiper {
+  position: absolute;
+  width: 100%;
+  padding: 0 90px;
+  bottom: 100px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: auto;
+    right: auto;
+    width: 80%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
+  .event-card {
+    @include event-card-base;
+    height: 135px;
+
+    .event-year {
+      @include event-year-base;
+      font-size: 24px;
+    }
+
+    .event-description {
+      @include event-description-base;
+      font-size: 14px;
+    }
+  }
+
+
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    @include swiper-button-base;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+
+    &::after {
+      font-size: 10px;
+    }
+  }
+
+  .swiper-button-prev {
+    left: 40px;
+  }
+
+  .swiper-button-next {
+    right: 40px;
+  }
+
+  .swiper-button-disabled {
+    opacity: 0 !important;
+    cursor: not-allowed;
+  }
+
+  .swiper-pagination {
+    @include swiper-pagination-base;
+    bottom: -20px;
+    @include swiper-pagination-bullet-size(6px);
+
+    .swiper-pagination-bullet-active {
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .event-swiper {
+    padding: 0 60px;
+    bottom: 80px;
+
+    @include responsive-event-card(120px, 22px, 13px);
+    @include responsive-swiper-buttons(35px, 9px, 10px, 10px);
+    @include responsive-pagination(-20px, 20px, 6px);
+
+    .swiper-slide:not(.swiper-slide-active) .event-card {
+      opacity: 0.5 !important;
+      transition: opacity 0.3s ease;
+    }
+
+    .swiper-slide-active .event-card {
+      opacity: 1 !important;
+      transition: opacity 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .event-swiper {
+    bottom: 0;
+
+    &::before {
+      display: block;
+    }
+
+    @include responsive-event-card(180px, 20px, 13px);
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none !important;
+    }
+
+    @include responsive-pagination(-30px, 30px, 8px, 6px);
+
+    .swiper-pagination .swiper-pagination-bullet-active {
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .event-swiper {
+    padding: 0 30px;
+
+    @include responsive-event-card(160px, 18px, 8px);
+    @include responsive-pagination(-25px, 25px, 10px, 5px);
+  }
+}
+
+@media (max-width: 360px) {
+  .event-swiper {
+    padding: 0 20px;
+
+    @include responsive-event-card(140px, 16px, 11px);
+    @include responsive-pagination(-20px, 20px, 8px, 3px);
+  }
+}

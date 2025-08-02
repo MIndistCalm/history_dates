@@ -1,21 +1,23 @@
 $primary: #5d5fef;
 $secondary: #ef5da8;
 
-$white: #ffffff;
 $background: #e5e5e5;
-$blue: #3877ee;
+$blue: rgba(56, 119, 238, 1);
+$blue-10: rgba(56, 119, 238, 0.1);
 $black-blue: rgba(66, 86, 122, 1);
 $black-blue-10: rgba(66, 86, 122, 0.1);
+$black-blue-40: rgba(66, 86, 122, 0.4);
 
 $gray-blue: #303e58;
 
 :root {
   --primary: #{$primary};
   --secondary: #{$secondary};
-  --white: #{$white};
   --background: #{$background};
   --blue: #{$blue};
+  --blue-10: #{$blue-10};
   --black-blue: #{$black-blue};
   --black-blue-10: #{$black-blue-10};
+  --black-blue-40: #{$black-blue-40};
   --gray-blue: #{$gray-blue};
 }
