@@ -52,7 +52,7 @@ export const HistoryDates = () => {
         <span className='date-container__end-date'>{currentTheme.endDate}</span>
       </div>
 
-      <EventSwiper events={currentTheme.events} />
+      <EventSwiper events={currentTheme.events} label={currentTheme.label} />
     </section>
   )
 }
