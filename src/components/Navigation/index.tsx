@@ -3,18 +3,12 @@ import './styles.scss'
 export interface NavigationProps {
   currentIndex: number
   totalItems: number
+  disabled?: boolean
   onPrevious: () => void
   onNext: () => void
-  disabled?: boolean
 }
 
-export const Navigation = ({
-  currentIndex,
-  totalItems,
-  onPrevious,
-  onNext,
-  disabled = false,
-}: NavigationProps) => {
+export const Navigation = ({ currentIndex, totalItems, onPrevious, onNext, disabled = false }: NavigationProps) => {
   const isPreviousDisabled = currentIndex <= 1 || disabled
   const isNextDisabled = currentIndex >= totalItems || disabled
 

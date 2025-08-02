@@ -1,7 +1,8 @@
 import { useHistoryDates } from '@/hooks'
 import { EventSwiper } from '../EventSwiper'
 import { Navigation } from '../Navigation'
-import { START_ANGLE } from './constants'
+import { RADIUS, START_ANGLE, FULL_CIRCLE_DEGREES } from '@/constants'
+
 import './styles.scss'
 
 export const HistoryDates = () => {
@@ -23,10 +24,9 @@ export const HistoryDates = () => {
       <div className='animated-circle' ref={circleRef}>
         <div className='animated-circle__outline'></div>
         {themes.map(({ id, label, active }, index) => {
-          const angle = (index * 360 - START_ANGLE) / 6 + rotationAngle
-          const radius = 264
-          const x = Math.cos((angle * Math.PI) / 180) * radius
-          const y = Math.sin((angle * Math.PI) / 180) * radius
+          const angle = (index * FULL_CIRCLE_DEGREES - START_ANGLE) / 6 + rotationAngle
+          const x = Math.cos((angle * Math.PI) / 180) * RADIUS
+          const y = Math.sin((angle * Math.PI) / 180) * RADIUS
 
           return (
             <div
