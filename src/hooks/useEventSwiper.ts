@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { gsap } from 'gsap'
-import { TEvent } from '../components/EventSwiper/types'
+import { TEvent } from '@/types'
+import { ANIMATION_DELAY_MS, TABLET_WIDTH } from '@/constants'
 
 export const useEventSwiper = (events: TEvent[]) => {
   const swiperRef = useRef<HTMLDivElement>(null)
@@ -10,7 +11,7 @@ export const useEventSwiper = (events: TEvent[]) => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768)
+      setIsMobile(window.innerWidth <= TABLET_WIDTH)
     }
     checkScreenSize()
     window.addEventListener('resize', checkScreenSize)
@@ -65,7 +66,7 @@ export const useEventSwiper = (events: TEvent[]) => {
             ease: 'power2.out',
           })
         }
-      }, 100)
+      }, ANIMATION_DELAY_MS)
     }
     prevEventsRef.current = events
   }, [events])
@@ -100,7 +101,7 @@ export const useEventSwiper = (events: TEvent[]) => {
       } else if (allSlides && !isMobile) {
         gsap.set(allSlides, { opacity: 1 })
       }
-    }, 100)
+    }, ANIMATION_DELAY_MS)
   }, [isMobile])
 
   return {

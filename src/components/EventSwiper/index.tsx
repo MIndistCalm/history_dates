@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
-import { TEvent } from './types'
 import { useEventSwiper } from '@/hooks'
+import { TEvent } from '@/types'
 
 import './styles.scss'
 import 'swiper/css'

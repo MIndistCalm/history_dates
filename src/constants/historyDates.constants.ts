@@ -1,4 +1,9 @@
-import { TTheme } from './types'
+import { TTheme } from '../types/historyDates.types'
+
+export const START_ANGLE = 360
+export const ANGLE_STEP = 60
+export const FULL_CIRCLE_DEGREES = 360
+export const RADIUS = 264
 
 export const defaultThemes: TTheme[] = [
   {
@@ -236,5 +241,3 @@ export const defaultThemes: TTheme[] = [
     ],
   },
 ]
-
-export const START_ANGLE = 360

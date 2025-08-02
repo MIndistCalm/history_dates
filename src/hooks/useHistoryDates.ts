@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { defaultThemes, START_ANGLE } from '../components/HistoryDates/constants'
-import { TTheme } from '../components/HistoryDates/types'
+import { ANGLE_STEP, defaultThemes, START_ANGLE } from '@/constants'
+import { TTheme } from '@/types'
 
 export const useHistoryDates = () => {
   const circleRef = useRef<HTMLDivElement>(null)
@@ -16,7 +16,7 @@ export const useHistoryDates = () => {
       prevThemes.map((theme, i) => (i === index ? { ...theme, active: true } : { ...theme, active: false })),
     )
 
-    const targetAngle = START_ANGLE - index * 60
+    const targetAngle = START_ANGLE - index * ANGLE_STEP
     gsap.to(
       {},
       {
@@ -40,8 +40,10 @@ export const useHistoryDates = () => {
         duration: 1,
         onUpdate: function () {
           const progress = this.progress()
-          const currentStartDate = Math.round(currentTheme.startDate + (targetStartDate - currentTheme.startDate) * progress)
-          setCurrentTheme(prev => ({ ...prev, startDate: currentStartDate }))
+          const currentStartDate = Math.round(
+            currentTheme.startDate + (targetStartDate - currentTheme.startDate) * progress,
+          )
+          setCurrentTheme((prev) => ({ ...prev, startDate: currentStartDate }))
         },
         ease: 'power2.out',
       },
@@ -54,7 +56,7 @@ export const useHistoryDates = () => {
         onUpdate: function () {
           const progress = this.progress()
           const currentEndDate = Math.round(currentTheme.endDate + (targetEndDate - currentTheme.endDate) * progress)
-          setCurrentTheme(prev => ({ ...prev, endDate: currentEndDate }))
+          setCurrentTheme((prev) => ({ ...prev, endDate: currentEndDate }))
         },
         ease: 'power2.out',
       },
